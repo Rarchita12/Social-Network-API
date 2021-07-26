@@ -30,11 +30,11 @@ const ThoughtSchema = new Schema(
   }
 );
 
-// create the Pizza model using the UserSchema
+// create the Thought model using the ThoughtSchema
 const Thought = model("Thought", ThoughtSchema);
-// get total count of comments and replies on retrieval
-// ThoughtSchema.virtual("reactionCount").get(function () {
-//   return this.reactions.length;
-// });
+// get total reply Count
+ThoughtSchema.virtual("reactionCount").get(function () {
+  return this.reactions.length;
+});
 // export the Thought model
 module.exports = Thought;

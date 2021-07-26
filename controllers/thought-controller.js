@@ -14,12 +14,10 @@ const thoughtController = {
       });
   },
 
+  //get a single thought by Id
   getThoughtById({ params }, res) {
     Thought.findOne({ _id: params.id })
-      /* .populate([
-        { path: "thoughts", select: "-__v" },
-        { path: "friends", select: "-__v" },
-      ])*/
+
       .select("-__v")
       .then((dbUserData) => {
         if (!dbUserData) {
@@ -34,7 +32,7 @@ const thoughtController = {
       });
   },
 
-  // update user by id
+  // update thought by id
   updateThought({ params, body }, res) {
     Thought.findOneAndUpdate({ _id: params.id }, body, {
       new: true,
@@ -50,7 +48,7 @@ const thoughtController = {
       .catch((err) => res.status(400).json(err));
   },
 
-  // delete user
+  // delete thought
   deleteThought({ params }, res) {
     Thought.findOneAndDelete({ _id: params.id })
       .then((dbUserData) => {
@@ -63,7 +61,7 @@ const thoughtController = {
       .catch((err) => res.status(400).json(err));
   },
 
-  // createThought
+  // create Thought
   createThought({ body }, res) {
     Thought.create(body)
       .then((dbThoughtData) => {
