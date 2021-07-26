@@ -33,8 +33,8 @@ const ThoughtSchema = new Schema(
 // create the Pizza model using the UserSchema
 const Thought = model("Thought", ThoughtSchema);
 // get total count of comments and replies on retrieval
-ThoughtSchema.virtual("reactionCount").get(function () {
-  return this.reactions.length;
-});
+// ThoughtSchema.virtual("reactionCount").get(function () {
+//   return this.reactions.length;
+// });
 // export the Thought model
 module.exports = Thought;
